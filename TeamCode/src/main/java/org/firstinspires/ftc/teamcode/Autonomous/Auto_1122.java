@@ -148,4 +148,11 @@ public class Auto_122 extends LinearOpMode {
         leftFrontDrive.setPower(1);
         leftBackDrive.setPower(1);
     }
+
+    public void drivebackward() {
+        rightFrontDrive.setPower(-1);
+        rightBackDrive.setPower(-1);
+        leftFrontDrive.setPower(-1);
+        leftBackDrive.setPower(-1);
+    }
 }
