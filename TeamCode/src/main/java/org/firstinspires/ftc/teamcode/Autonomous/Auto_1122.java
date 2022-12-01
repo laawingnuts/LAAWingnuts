@@ -99,28 +99,25 @@ public class Auto_122 extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
-        // Step 1:  Drive forward for 3 seconds
-        leftFrontDrive.setPower(FORWARD_SPEED);
-        rightFrontDrive.setPower(FORWARD_SPEED);
-
+        // Step 1:  Drive forward for 1 second
+        driveStraight();
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             telemetry.addData("Path", "Leg 1: %4.1f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
         // Step 2:  Spin right for 1.3 seconds
-        leftDrive.setPower(TURN_SPEED);
-        rightDrive.setPower(-TURN_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
-            telemetry.addData("Path", "Leg 2: %4.1f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
+//        leftDrive.setPower(TURN_SPEED);
+//        rightDrive.setPower(-TURN_SPEED);
+//        runtime.reset();
+//        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
+//            telemetry.addData("Path", "Leg 2: %4.1f S Elapsed", runtime.seconds());
+//            telemetry.update();
+//        }
 
         // Step 3:  Drive Backward for 1 Second
-        leftDrive.setPower(-FORWARD_SPEED);
-        rightDrive.setPower(-FORWARD_SPEED);
+        driveBackward();
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             telemetry.addData("Path", "Leg 3: %4.1f S Elapsed", runtime.seconds());
@@ -128,8 +125,7 @@ public class Auto_122 extends LinearOpMode {
         }
 
         // Step 4:  Stop
-        leftDrive.setPower(0);
-        rightDrive.setPower(0);
+        stopDriving();
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -143,17 +139,17 @@ public class Auto_122 extends LinearOpMode {
     }
 
     public void driveStraight() {
-        rightFrontDrive.setPower(1);
-        rightBackDrive.setPower(1);
-        leftFrontDrive.setPower(1);
-        leftBackDrive.setPower(1);
+        rightFrontDrive.setPower(FORWARD_SPEED);
+        rightBackDrive.setPower(FORWARD_SPEED);
+        leftFrontDrive.setPower(FORWARD_SPEED);
+        leftBackDrive.setPower(FORWARD_SPEED);
     }
 
-    public void drivebackward() {
-        rightFrontDrive.setPower(-1);
-        rightBackDrive.setPower(-1);
-        leftFrontDrive.setPower(-1);
-        leftBackDrive.setPower(-1);
+    public void driveBackward() {
+        rightFrontDrive.setPower(-FORWARD_SPEED);
+        rightBackDrive.setPower(-FORWARD_SPEED);
+        leftFrontDrive.setPower(-FORWARD_SPEED);
+        leftBackDrive.setPower(-FORWARD_SPEED);
     }
 
 
